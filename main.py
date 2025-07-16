@@ -1,17 +1,23 @@
-from fastapi import FastAPI, status
+from typing import Optional
+
+from fastapi import FastAPI, status, Header
 from fastapi.middleware.cors import CORSMiddleware
 from agents import gen_trace_id, trace
 from agents.mcp import MCPServerStreamableHttp
 
 from schemas import ChatRequest, ChatResponse
-from customer_agent import process_message
+from customer_agent import process_message, process_message_with_token
 from config import CUSTOMER_MCP_URL
 
 app = FastAPI()
 
 
 @app.post("/chat", response_model=ChatResponse, status_code=status.HTTP_201_CREATED)
-async def post_chat_message(chat_req: ChatRequest):
+async def post_chat_message(chat_req: ChatRequest, authorization: Optional[str] = Header(None)):
+    token = None
+    if authorization and authorization.startswith("Bearer "):
+        token = authorization.split(" ")[1]
+
     async with MCPServerStreamableHttp(
         name="Streamable MCP Customer server",
         params={
@@ -24,7 +30,7 @@ async def post_chat_message(chat_req: ChatRequest):
             print(
                 f"View trace: https://platform.openai.com/traces/trace?trace_id={trace_id}\n"
             )
-            resp = await process_message(server, chat_req)
+            resp = await process_message_with_token(server, chat_req, token) if token else await process_message(server, chat_req)
             return resp
 
 
