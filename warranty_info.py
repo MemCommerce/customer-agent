@@ -2,12 +2,23 @@ from agents import function_tool
 
 
 @function_tool
-def get_terms_and_conditions():
+def get_terms_and_conditions(brand: str):
     """
-    Returns the terms and conditions for returns and warranty for all brands available.
-    This includes specific details for clothing (t-shirts, shorts, blouses) under the AuraLite brand.
+    Retrieves the terms and conditions for returns and warranty for a specific brand.
+
+    Args:
+        brand (str): The name of the brand to get information for.
+                     Case-insensitive.
+    
+    Returns:
+        str: A string containing the terms and conditions for the specified brand,
+             or an error message if the brand is not found.
     """
-    terms = """
+    
+    # Dictionary containing the terms and conditions for each brand.
+    # The brand name is the key, and the terms are the value.
+    terms_data = {
+        "AuraLite": """
 ---
 ## AuraLite: Return and Warranty Terms
 
@@ -43,10 +54,10 @@ AuraLite provides a **30-day warranty** for manufacturing defects on all its clo
 * **Mechanical damage:** Injuries, tears, stains, or other damage caused by accidents, improper use, misuse, or external factors.
 * **Color changes or shrinkage:** If they're a result of improper washing or drying.
 * **Products that have been modified or repaired:** By unauthorized persons.
-
 ---
+""",
+        "StrideNova": """
 ---
-
 ## StrideNova: Return and Warranty Terms
 
 Thank you for choosing StrideNova products! We value your trust in the quality and durability of our winter apparel. Please familiarize yourself with our return and warranty terms.
@@ -86,10 +97,10 @@ At StrideNova, we pride ourselves on the carefully selected high-quality materia
 * **Mechanical damage:** Injuries, tears, holes, burns, stains, or other damage caused by accidents, improper use, misuse, or external factors (e.g., snagging on a sharp object, pet bites).
 * **Cosmetic defects:** Minor scratches or changes that do not affect the product's functionality.
 * **Products that have been modified or repaired:** By unauthorized persons.
-
 ---
+""",
+        "Kixora": """
 ---
-
 ## Kixora: Return and Warranty Terms
 
 Welcome to the world of Kixora, where contemporary design meets exceptional comfort. We stand behind the quality of our apparel, underwear, and footwear. Please review our terms to ensure a smooth and satisfactory experience.
@@ -129,5 +140,18 @@ Kixora is synonymous with minimalist aesthetics and superior materials. Our warr
 * **Fit and comfort after use:** The warranty does not cover issues related to the fit or comfort of a product after it has been worn.
 * **Water damage:** On footwear or apparel not explicitly marked as waterproof.
 * **Products that have been modified or repaired:** By unauthorized persons.
+---
 """
-    return terms
+    }
+    
+    # Standardize the input brand name to Title Case to match the dictionary keys
+    formatted_brand = brand.strip().title()
+
+    # Check if the requested brand exists in the dictionary
+    if formatted_brand in terms_data:
+        return terms_data[formatted_brand]
+    else:
+        # If the brand is not found, return an error message with the available options
+        available_brands = ", ".join(terms_data.keys())
+        return (f"Invalid brand specified: '{brand}'.\n"
+                f"Please choose from the available options: {available_brands}.")
