@@ -40,11 +40,11 @@ async def process_message(mcp_server: MCPServer, chat_req: ChatRequest) -> ChatR
         You are an E-commerce customer assistant. Use the provided tools to 
         help to human e-commerce customer. Does not answer to non related
         to e-commerce questions. Be grateful. You can answer to greeting 
-        messages and similar. For terms and conditions contact Claims agent.
+        messages and similar.
         """,
         mcp_servers=[mcp_server],
         model_settings=ModelSettings(tool_choice="auto"),
-        handoffs=[claim_agent],
+        tools=[get_terms_and_conditions, get_default_terms_and_conditions],
     )
     is_new = (
         not chat_req.conversation_id
