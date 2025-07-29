@@ -8,7 +8,7 @@ def get_terms_and_conditions(brand: str):
 
     Args:
         brand (str): The name of the brand to get information for.
-                     Case-insensitive.
+                     Case-sensitive.
     
     Returns:
         str: A string containing the terms and conditions for the specified brand,
@@ -144,12 +144,9 @@ Kixora is synonymous with minimalist aesthetics and superior materials. Our warr
 """
     }
     
-    # Standardize the input brand name to Title Case to match the dictionary keys
-    formatted_brand = brand.strip().title()
-
     # Check if the requested brand exists in the dictionary
-    if formatted_brand in terms_data:
-        return terms_data[formatted_brand]
+    if brand in terms_data:
+        return terms_data[brand]
     else:
         # If the brand is not found, return an error message with the available options
         available_brands = ", ".join(terms_data.keys())
