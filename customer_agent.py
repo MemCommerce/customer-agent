@@ -6,6 +6,7 @@ from agents.model_settings import ModelSettings
 
 from schemas import ChatResponse, ChatRequest, MessageResponse
 from memory import conversation_store
+from warranty_info import get_terms_and_conditions
 
 
 async def process_message(mcp_server: MCPServer, chat_req: ChatRequest) -> ChatResponse:
@@ -19,6 +20,7 @@ async def process_message(mcp_server: MCPServer, chat_req: ChatRequest) -> ChatR
         """,
         mcp_servers=[mcp_server],
         model_settings=ModelSettings(tool_choice="auto"),
+        tools=[get_terms_and_conditions]
     )
     is_new = (
         not chat_req.conversation_id
@@ -59,6 +61,7 @@ async def process_message_with_token(mcp_server: MCPServer, chat_req: ChatReques
         """,
         mcp_servers=[mcp_server],
         model_settings=ModelSettings(tool_choice="auto"),
+        tools=[get_terms_and_conditions]
     )
     is_new = (
         not chat_req.conversation_id
