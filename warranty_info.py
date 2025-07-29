@@ -152,3 +152,53 @@ Kixora is synonymous with minimalist aesthetics and superior materials. Our warr
         available_brands = ", ".join(terms_data.keys())
         return (f"Invalid brand specified: '{brand}'.\n"
                 f"Please choose from the available options: {available_brands}.")
+    
+
+@function_tool
+def get_default_terms_and_conditions():
+    """
+    Provides default return and warranty terms and conditions,
+    used when brand-specific data is unavailable.
+
+    Returns:
+        str: Default return and warranty information.
+    """
+    return """
+---
+## Default: Return and Warranty Terms
+
+These default terms apply to products that do not have brand-specific return or warranty conditions.
+
+### Return Policy (14-Day Period)
+
+As an online customer, you have the right to return goods within **14 calendar days** from the date of receiving the shipment.
+
+**To be eligible for a return, the following conditions must be met:**
+
+- **Product condition:** Items must be unused, unworn, unwashed, and in their original packaging with all tags and labels attached.
+- **Packaging:** The original product packaging must be intact and undamaged.
+- **Hygiene-sensitive items:** Items such as underwear, swimwear, or personal care products cannot be returned once opened or unsealed.
+- **Return shipping:** The customer is responsible for return shipping costs, unless the product is defective or the return is due to an error on our part.
+- **Refund timeline:** Refunds will be issued within **14 calendar days** after the returned product has been received and inspected.
+
+---
+
+### Warranty Terms (30 Days)
+
+We offer a **30-day limited warranty** for all products, effective from the date of purchase.
+
+**The warranty covers:**
+
+- Manufacturing defects such as faulty stitching, fabric defects, or broken fasteners.
+- Issues affecting the usability of the product due to production flaws.
+
+**The warranty does not cover:**
+
+- Normal wear and tear.
+- Damage caused by improper use, accidents, or external factors.
+- Damage due to incorrect washing, drying, or storage.
+- Altered or repaired products not serviced by authorized personnel.
+
+For any concerns related to returns or warranty claims, please contact our customer service team with your order number and product details.
+---
+"""
