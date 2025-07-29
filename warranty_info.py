@@ -86,5 +86,48 @@ At StrideNova, we pride ourselves on the carefully selected high-quality materia
 * **Mechanical damage:** Injuries, tears, holes, burns, stains, or other damage caused by accidents, improper use, misuse, or external factors (e.g., snagging on a sharp object, pet bites).
 * **Cosmetic defects:** Minor scratches or changes that do not affect the product's functionality.
 * **Products that have been modified or repaired:** By unauthorized persons.
+
+---
+---
+
+## Kixora: Return and Warranty Terms
+
+Welcome to the world of Kixora, where contemporary design meets exceptional comfort. We stand behind the quality of our apparel, underwear, and footwear. Please review our terms to ensure a smooth and satisfactory experience.
+
+### Return Policy (14-Day Period)
+
+As an online customer, you have the right to **return purchased goods** from Kixora within **14 calendar days** from the date of receipt of the shipment.
+
+**For a return to be accepted, the following stringent conditions must be met:**
+
+* **Product must be in its original, unworn condition:** Apparel and footwear must not have been worn (beyond trying on), washed, or altered. They must have all original tags, labels, and be in their original, undamaged packaging (e.g., shoe box).
+* **Special Condition for Underwear:** For hygiene reasons, underwear (briefs, boxers, bralettes, etc.) **cannot be returned if the protective seal or original packaging has been opened or tampered with.** Items must be in their sealed, unopened original packaging.
+* **Condition of Footwear:** Footwear must be tried on indoors, preferably on a carpeted surface. Shoes with any signs of wear on the soles, scuffs, or creases will not be accepted for return. The original shoe box must be returned without any damage, tape, or labels applied directly to it.
+* **No signs of use:** The product must be free of any scents (like perfume or smoke), stains (like makeup or deodorant), or any other signs of use.
+* **Shipping costs:** Return shipping costs are at the customer's expense, except in cases of a defective product or an error on Kixora's part.
+* **Refund:** Once we receive and inspect the returned product and confirm it meets all conditions, the amount will be refunded via bank transfer within 14 calendar days from the date of receipt of the returned shipment.
+
+---
+
+### Warranty Terms
+
+Kixora provides a **45-day warranty** for manufacturing defects on all its products, including apparel, underwear, and footwear, effective from the date of purchase.
+
+Kixora is synonymous with minimalist aesthetics and superior materials. Our warranty protects against manufacturing flaws that compromise the fit, form, or function of our products.
+
+**The warranty covers the following cases:**
+
+* **For Apparel & Underwear:** Seam integrity issues (unraveling), fabric defects (e.g., runs or holes present before wear), or issues with elastic bands (e.g., premature loss of elasticity not caused by improper washing).
+* **For Footwear:** Defects in sole adhesion (sole separation from the upper), faulty stitching, or defective hardware (e.g., eyelets, buckles) that are not the result of force or misuse.
+* **For all products:** Faulty zippers, buttons, or clasps that are a result of a factory defect.
+
+**The warranty does not cover:**
+
+* **Normal wear and tear:** This includes fabric pilling from friction, color fading from sun exposure, worn-down soles or heels on footwear from regular use.
+* **Improper maintenance:** Damage caused by not following the care instructions on the label (e.g., machine washing a dry-clean-only item, using bleach, improper drying).
+* **Mechanical damage:** Tears, snags, stains, scuffs, or any other damage caused by accidents, misuse, or external factors.
+* **Fit and comfort after use:** The warranty does not cover issues related to the fit or comfort of a product after it has been worn.
+* **Water damage:** On footwear or apparel not explicitly marked as waterproof.
+* **Products that have been modified or repaired:** By unauthorized persons.
 """
     return terms
