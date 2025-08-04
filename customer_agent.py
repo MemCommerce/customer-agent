@@ -61,6 +61,9 @@ async def process_message(mcp_server: MCPServer, chat_req: ChatRequest, token: s
 
     session = MongoDBSession(conversation_id, db)
 
+    print("items")
+    print(await session.get_items())
+
     result = await Runner.run(
         starting_agent=agent, input=chat_req.message, session=session
     )
