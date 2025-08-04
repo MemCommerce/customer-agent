@@ -6,7 +6,7 @@ from agents import gen_trace_id, trace
 from agents.mcp import MCPServerStreamableHttp
 
 from schemas import ChatRequest, ChatResponse
-from customer_agent import process_message, process_message_with_token
+from customer_agent import process_message
 from config import CUSTOMER_MCP_URL
 
 app = FastAPI()
@@ -30,7 +30,7 @@ async def post_chat_message(chat_req: ChatRequest, authorization: Optional[str] 
             print(
                 f"View trace: https://platform.openai.com/traces/trace?trace_id={trace_id}\n"
             )
-            resp = await process_message_with_token(server, chat_req, token) if token else await process_message(server, chat_req)
+            resp = await process_message(server, chat_req, token) if token else await process_message(server, chat_req)
             return resp
 
 
