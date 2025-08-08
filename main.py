@@ -5,8 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from agents import gen_trace_id, trace
 from agents.mcp import MCPServerStreamableHttp
 
-from schemas import ChatRequest, ChatResponse
-from customer_agent import process_message
+from schemas import ChatRequest, ChatResponse, Review
+from customer_agent import process_message, process_review, process_review_agentic
 from config import CUSTOMER_MCP_URL
 
 app = FastAPI()
@@ -32,6 +32,28 @@ async def post_chat_message(chat_req: ChatRequest, authorization: Optional[str] 
             )
             resp = await process_message(server, chat_req, token) if token else await process_message(server, chat_req)
             return resp
+        
+
+@app.post("/reviews", status_code=status.HTTP_201_CREATED)
+async def start_review_process(review: Review):
+    # await process_review(review)
+
+    async with MCPServerStreamableHttp(
+        name="Streamable MCP Customer server",
+        params={
+            "url": CUSTOMER_MCP_URL,
+        },
+        client_session_timeout_seconds=30,
+    ) as server:
+        trace_id = gen_trace_id()
+        with trace(workflow_name="Customer Agent workflow", trace_id=trace_id):
+            print(
+                f"View trace: https://platform.openai.com/traces/trace?trace_id={trace_id}\n"
+            )
+            resp = await process_review_agentic(server, review)
+            return resp
+
+    return "OK"
 
 
 app.add_middleware(
